@@ -495,12 +495,18 @@ function element:new(flag, config)
 	    if self.multi then
             local newValue = {}
             for _, option in self.options do
-                newValue[option] = (value[option] and true) or (table.find(value, option) and true) or false
+                if type(value) == "table" then
+                    newValue[option] = (value[option] and true) or (table.find(value, option) and true) or false
+                elseif type(value) == "string" then
+                    newValue[option] = (option == value) and true or false
+                elseif type(value) == "number" then
+                    newValue[option] = (option == self.options[value]) and true or false
+                end
             end
 
             self.value = newValue
         else
-            self.value = table.find(self.options, value) and value or self.value
+            self.value = self.options[value] or (table.find(self.options, value) and value) or self.value
         end
 
         self:updateValue()
