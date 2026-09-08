@@ -115,8 +115,8 @@ return function (library)
                 return dropdown
             end
 
-            function tab:AddInput(config)
-                local input = tab:addInput({
+            function tab:AddInput(flag, config)
+                local input = tab:addInput(flag, {
                     title = config.Title,
                     desc = config.Description,
                     placeHolder = config.Placeholder,
