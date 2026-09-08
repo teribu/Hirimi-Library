@@ -55,7 +55,7 @@ function themeManager:init(library)
     end
 
     themeManager.library = library
-    themeManager.oldThemes = library.Themes
+    themeManager.oldThemes = library.themes
 
     if library.name and type(library.name) == "string" then
         themeManager.folder = library.name
