@@ -29,7 +29,7 @@ return function (library)
                 dragSizeable = true,
                 scale = 0.75,
                 realtimeResize = true
-            }
+            },
             theme = config.Theme,
             acrylic = config.Acrylic,
             keybind = config.MinimizeKey
