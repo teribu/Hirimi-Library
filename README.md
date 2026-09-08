@@ -18,7 +18,7 @@ local library = loadstring(game:HttpGet(
 
 ## 📜 Usage
 
-See the example implementation in: [example.luau](tests/example.luau)
+See the example implementation in: [example.luau](example.luau)
 
 ## ❤️ Credits
 
