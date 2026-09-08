@@ -51,7 +51,7 @@ do
         end
     })
 
-    local home_direct_input = Tabs.Home:AddInput({
+    local home_direct_input = Tabs.Home:AddInput("home_direct_input", {
         Title = "Direct Home Input",
         Description = "Element placed directly in tab.",
         Placeholder = "Type..."
@@ -138,7 +138,7 @@ do
         end
     })
 
-    local opt_input = Tabs.Options:AddInput({
+    local opt_input = Tabs.Options:AddInput("ost_input", {
         Title = "Hotkey Configuration",
         Description = "Enter key string.",
         Placeholder = "LeftControl"
@@ -188,7 +188,7 @@ do
         end
     })
 
-    local atk_input = Tabs.Attacking:AddInput({
+    local atk_input = Tabs.Attacking:AddInput("atk_input", {
         Title = "Target Key",
         Description = "Key to hold.",
         Placeholder = "MouseButton2"
