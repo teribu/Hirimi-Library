@@ -237,5 +237,5 @@ Fluent:Notify({
     Duration = 5
 })
 
-themeManager:init(library)
-saveManager:init(library)
+themeManager:init(libraryRaw)
+saveManager:init(libraryRaw)
