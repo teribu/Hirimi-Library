@@ -193,40 +193,30 @@ function element:new(flag, config)
 		})
 	})
 
-    function dropdown:open()
-        dropdown.opened = true
-        window.sidebar.tabContainer.tabHolder.ScrollingEnabled = false
-        container.ScrollingEnabled = false
-        dropdownHolderCanvas.Visible = true
-        tween.play(dropdownHolderFrame, { Size = UDim2.fromScale(1, 1) }, { duration = 0.15 })
-    end
-
-    function dropdown:close()
-        dropdown.opened = false
-        window.sidebar.tabContainer.tabHolder.ScrollingEnabled = true
-        container.ScrollingEnabled = true
-        dropdownHolderCanvas.Visible = false
-        dropdownHolderFrame.Size = UDim2.fromScale(1, 0.4)
-    end
-
     local function recalculateListPosition()
         local scale = window.scaler.Scale or 1
         local displayPos = dropdownDisplay.AbsolutePosition
         local displaySize = dropdownDisplay.AbsoluteSize
         local rootPos = window.root.AbsolutePosition
 
-        local maxCanvasHeight = #dropdown.options > 8 and dropdown.openHeight or ((optionHolder.UIListLayout.AbsoluteContentSize.Y) + 11)
+        local maxCanvasHeight = optionHolder.UIListLayout.AbsoluteContentSize.Y
 
         local x = (displayPos.X - rootPos.X) / scale
         local y = (displayPos.Y - rootPos.Y) / scale
         local displayHeight = displaySize.Y / scale
 
-        local targetCanvasHeight = maxCanvasHeight / scale
+        local targetCanvasHeight = 20 +
+            ((#dropdown.options > 8 and dropdown.openHeight)
+            or (maxCanvasHeight / scale))
+
         local viewportHeight = camera.ViewportSize.Y / scale
         local rootY = rootPos.Y / scale
 
-        if (y + displayHeight + targetCanvasHeight) > (viewportHeight - rootY) then
-            y = y - targetCanvasHeight + displayHeight
+        local overflow = y + displayHeight + targetCanvasHeight
+            - (viewportHeight - rootY)
+
+        if overflow > 0 then
+            y -= overflow
         end
 
         dropdownHolderCanvas.Position = UDim2.fromOffset(x, y)
@@ -249,10 +239,28 @@ function element:new(flag, config)
     	end
     end
 
-    recalculateListPosition()
     recalculateListSize()
+    recalculateListPosition()
 
     addSignal(dropdownDisplay:GetPropertyChangedSignal("AbsolutePosition"), recalculateListPosition)
+
+    function dropdown:open()
+        recalculateListSize()
+        recalculateListPosition()
+        dropdown.opened = true
+        window.sidebar.tabContainer.tabHolder.ScrollingEnabled = false
+        container.ScrollingEnabled = false
+        dropdownHolderCanvas.Visible = true
+        tween.play(dropdownHolderFrame, { Size = UDim2.fromScale(1, 1) }, { duration = 0.15 })
+    end
+
+    function dropdown:close()
+        dropdown.opened = false
+        window.sidebar.tabContainer.tabHolder.ScrollingEnabled = true
+        container.ScrollingEnabled = true
+        dropdownHolderCanvas.Visible = false
+        dropdownHolderFrame.Size = UDim2.fromScale(1, 0.4)
+    end
 
     function dropdown:build()
         for _, button in self.buttons do

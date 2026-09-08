@@ -26,6 +26,10 @@ local library = {
     gui = gui
 }
 
+function library:setNotificationScale(scale)
+    notificationModule:setScale(scale)
+end
+
 function library:safeCallback(callback, ...)
     if not callback then
         return
@@ -69,7 +73,11 @@ function library:mergeDictionaries(default, user)
         if type(value) == "table" and type(user[key]) == "table" then
             result[key] = self:mergeDictionaries(value, user[key])
         else
-            result[key] = user[key] ~= nil and user[key] or value
+            if user[key] ~= nil then
+                result[key] = user[key]
+            else
+                result[key] = value
+            end
         end
     end
 
@@ -127,11 +135,11 @@ function library:createWindow(config)
             responsive = false,
             dragSizeable = true,
             scale = 0.7,
+            realtimeResize = true
         },
         theme = 'dark',
         acrylic = true,
-        realtimeResize = true,
-        keybind = Enum.KeyCode.LeftControl,
+        keybind = Enum.KeyCode.LeftControl
     }
 
     self:mergeDictionaries(defaultConfig, config)

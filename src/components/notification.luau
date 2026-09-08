@@ -7,9 +7,16 @@ local new = creator.new
 local addSignal = creator.addSignal
 
 local notification = {
-    scale = 0.26,
+    scale = 0.28,
     totalNotifications = 0
 }
+
+function notification:setScale(scale)
+    notification.scale = scale
+    if notification.updateScale then
+        notification.updateScale()
+    end
+end
 
 function notification:init(gui)
     notification.scaler = new("UIScale", {
@@ -42,6 +49,7 @@ function notification:init(gui)
     	notification.scaler.Scale = maxAllowedWidth / baseWidth
     end
 
+    notification.updateScale = updateScale
     updateScale()
     addSignal(camera:GetPropertyChangedSignal("ViewportSize"), updateScale)
 

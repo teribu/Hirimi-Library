@@ -14,18 +14,17 @@ local window = library:createWindow({
         },
         userProfile = {
             name = "Teru",
-            desc = "# 3107",
-            avatar = "rbxassetid://129581519744165"
+            desc = "# 3107"
         }
     },
     size = {
         responsive = false,
         dragSizeable = true,
         scale = 0.75,
+        realtimeResize = true -- default is true, recommended false for performance
     },
     theme = "dark",
     acrylic = true, -- default is true, recommended false for performance
-    realtimeResize = true, -- default is true, recommended false for performance
     keybind = Enum.KeyCode.LeftControl,
 })
 
