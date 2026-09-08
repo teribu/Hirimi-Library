@@ -24,6 +24,12 @@ return function (library)
             sidebar = {
                 width = config.TabWidth,
             },
+            size = {
+                responsive = false,
+                dragSizeable = true,
+                scale = 0.75,
+                realtimeResize = true
+            }
             theme = config.Theme,
             acrylic = config.Acrylic,
             keybind = config.MinimizeKey
