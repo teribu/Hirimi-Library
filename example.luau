@@ -1,5 +1,5 @@
-local themeManager = loadstring(game:HttpGet("https://github.com/teribu/my-tools/raw/main/thememanager/thememanager.luau"))()
-local saveManager = loadstring(game:HttpGet("https://github.com/teribu/my-tools/raw/main/savemanager/savemanager.luau"))()
+local themeManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/thememanager.luau"))()
+local saveManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/savemanager.luau"))()
 local library = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/releases/latest/download/main.luau"))()
 
 local window = library:createWindow({

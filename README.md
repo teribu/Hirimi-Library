@@ -24,6 +24,7 @@ See the example implementation in: [example.luau](example.luau)
 
 * [rojo](https://github.com/rojo-rbx/rojo) — Development workflow
 * [bundler](https://github.com/teribu/Hirimi-Library/tree/main/addons/bundler.py) — Luau bundler using
+
 ## 📄 License
 
 Licensed under the MIT License. See [LICENSE](LICENSE) for details.
