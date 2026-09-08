@@ -1,9 +1,9 @@
 local libraryRaw = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/releases/latest/download/main.luau"))()
 local themeManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/themeManager.luau"))()
 local saveManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/saveManager.luau"))()
-local fluentAdapterFactory = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/fluentAdapter.luau"))
+local fluentAdapter = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/fluentAdapter.luau"))()
 
-local Fluent = fluentAdapterFactory(libraryRaw)
+local Fluent = fluentAdapter(libraryRaw)
 
 local Window = Fluent:CreateWindow({
     Title = "Hirimi Library",
