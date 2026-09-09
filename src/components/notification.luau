@@ -179,8 +179,10 @@ function notification:new(config)
 
     task.spawn(function()
         newNotification:Open()
-        task.wait(config.duration)
-        newNotification:Close()
+        if not config.duration then
+            task.wait(config.duration)
+            newNotification:Close()
+        end
     end)
 
     return newNotification
