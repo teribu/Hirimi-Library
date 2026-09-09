@@ -6,236 +6,133 @@ local fluentAdapter = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-
 local Fluent = fluentAdapter(libraryRaw)
 
 local Window = Fluent:CreateWindow({
-    Title = "Hirimi Library",
-    Logo = "rbxassetid://109103782993270",
+    Title = "Fluent " .. Fluent.Version,
+    SubTitle = "by dawid", -- not work
     TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460), -- not work
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
-    Acrylic = true,
-    MinimizeKey = Enum.KeyCode.LeftControl
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Home = Window:AddTab({ Title = "Home", Icon = "rbxassetid://10723407389" }),
-    Options = Window:AddTab({ Title = "Options", Icon = "rbxassetid://10734950020" }),
-    Attacking = Window:AddTab({ Title = "Attacking", Icon = "rbxassetid://10734975692" }),
-    Defending = Window:AddTab({ Title = "Defending", Icon = "rbxassetid://10734951847" })
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
+local Options = Fluent.Options
+
 do
-    local home_direct_toggle = Tabs.Home:AddToggle("home_direct_toggle", {
-        Title = "Direct Home Toggle",
-        Description = "Element placed directly in tab.",
-        Default = true
+    Fluent:Notify({
+        Title = "Notification",
+        Content = "This is a notification",
+        SubContent = "SubContent", -- not work
+        Duration = 5 -- Set to nil to make the notification not disappear
     })
-    home_direct_toggle:OnChanged(function(v)
-        print("[ Hirimi: home_direct_toggle ] " .. tostring(v))
-    end)
 
-    local home_direct_slider = Tabs.Home:AddSlider("home_direct_slider", {
-        Title = "Direct Home Slider",
-        Description = "Element placed directly in tab.",
-        Min = 1,
-        Max = 100,
-        Rounding = 1,
-        Default = 50
+
+
+    Tabs.Main:AddParagraph({
+        Title = "Paragraph",
+        Content = "This is a paragraph.\nSecond line!"
     })
-    home_direct_slider:OnChanged(function(v)
-        print("[ Hirimi: home_direct_slider ] " .. tostring(v))
-    end)
 
-    Tabs.Home:AddButton({
-        Title = "Direct Home Button",
-        Description = "Click to execute",
+
+
+    Tabs.Main:AddButton({
+        Title = "Button",
+        Description = "Very important button",
         Callback = function()
-            print("[ Hirimi: Direct Home Button ] Executed")
+            print("Button Clicked!")
         end
     })
 
-    local home_direct_input = Tabs.Home:AddInput("home_direct_input", {
-        Title = "Direct Home Input",
-        Description = "Element placed directly in tab.",
-        Placeholder = "Type..."
-    })
-    home_direct_input:OnChanged(function(v)
-        print("[ Hirimi: home_direct_input ] " .. tostring(v))
+
+
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+
+    Toggle:OnChanged(function()
+        print("Toggle changed:", Options.MyToggle.Value)
     end)
 
-    local home_direct_dropdown = Tabs.Home:AddDropdown("home_direct_dropdown", {
-        Title = "Direct Home Dropdown",
-        Description = "Select option",
-        Values = {"Opt1", "Opt2", "Opt3", "Opt4", "Opt5", "Opt6", "Opt7", "Opt8", "Opt9", "Opt10"},
-        Default = "Opt1"
-    })
-    home_direct_dropdown:OnChanged(function(v)
-        print("[ Hirimi: home_direct_dropdown ] " .. tostring(v))
-    end)
+    Options.MyToggle:SetValue(false)
 
-    local home_direct_multidropdown = Tabs.Home:AddDropdown("home_direct_multidropdown", {
-        Title = "Direct Home Multi Dropdown",
-        Description = "Select multiple options",
-        Values = {"Opt1", "Opt2", "Opt3", "Opt4", "Opt5", "Opt6", "Opt7", "Opt8", "Opt9", "Opt10"},
-        Default = {"Opt1", "Opt2", "Opt3"},
-        Multi = true
-    })
-    home_direct_multidropdown:OnChanged(function(v)
-        print("[ Hirimi: home_direct_multidropdown ] Selected updated")
-    end)
 
-    Tabs.Home:AddParagraph({
-        Title = "Level 1: Core System",
-        Content = "Base layer of nested architecture."
-    })
 
-    local nest_t1 = Tabs.Home:AddToggle("nest_t1", {
-        Title = "Toggle Layer 1",
-        Description = "State trigger",
-        Default = true
-    })
-    nest_t1:OnChanged(function(v)
-        print("[ Hirimi: nest_t1 ] " .. tostring(v))
-    end)
-
-    local nest_s1 = Tabs.Home:AddSlider("nest_s1", {
-        Title = "Slider Layer 1",
-        Description = "Value scale",
-        Min = 1,
-        Max = 10,
+    local Slider = Tabs.Main:AddSlider("Slider", {
+        Title = "Slider",
+        Description = "This is a slider",
+        Default = 2,
+        Min = 0,
+        Max = 5,
         Rounding = 1,
-        Default = 5
-    })
-    nest_s1:OnChanged(function(v)
-        print("[ Hirimi: nest_s1 ] " .. tostring(v))
-    end)
-end
-
-do
-    local opt_toggle = Tabs.Options:AddToggle("opt_toggle", {
-        Title = "Smooth Transitions",
-        Description = "Enable animations.",
-        Default = true
-    })
-    opt_toggle:OnChanged(function(v)
-        print("[ Hirimi: opt_toggle ] " .. tostring(v))
-    end)
-
-    local opt_slider = Tabs.Options:AddSlider("opt_slider", {
-        Title = "Refresh Rate Cap",
-        Description = "Limit FPS.",
-        Min = 30,
-        Max = 144,
-        Rounding = 1,
-        Default = 60
-    })
-    opt_slider:OnChanged(function(v)
-        print("[ Hirimi: opt_slider ] " .. tostring(v))
-    end)
-
-    Tabs.Options:AddButton({
-        Title = "Reset Preferences",
-        Description = "Reset all settings to default",
-        Callback = function()
-            print("[ Hirimi: Reset Preferences ] Executed")
+        Callback = function(Value)
+            print("Slider was changed:", Value)
         end
     })
 
-    local opt_input = Tabs.Options:AddInput("ost_input", {
-        Title = "Hotkey Configuration",
-        Description = "Enter key string.",
-        Placeholder = "LeftControl"
-    })
-    opt_input:OnChanged(function(v)
-        print("[ Hirimi: opt_input ] " .. tostring(v))
+    Slider:OnChanged(function(Value)
+        print("Slider changed:", Value)
     end)
 
-    local opt_dropdown = Tabs.Options:AddDropdown("opt_dropdown", {
-        Title = "Accent Color Scheme",
-        Description = "Select theme accent.",
-        Values = {"Col1", "Col2", "Col3", "Col4", "Col5"},
-        Default = "Col1"
-    })
-    opt_dropdown:OnChanged(function(v)
-        print("[ Hirimi: opt_dropdown ] " .. tostring(v))
-    end)
-end
+    Slider:SetValue(3)
 
-do
-    local atk_toggle = Tabs.Attacking:AddToggle("atk_toggle", {
-        Title = "Enable Auto-Target",
-        Description = "Activate targeting logic.",
-        Default = false
+
+
+    local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Dropdown",
+        Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Multi = false,
+        Default = 1,
     })
-    atk_toggle:OnChanged(function(v)
-        print("[ Hirimi: atk_toggle ] " .. tostring(v))
+
+    Dropdown:SetValue("four")
+
+    Dropdown:OnChanged(function(Value)
+        print("Dropdown changed:", Value)
     end)
 
-    local atk_slider = Tabs.Attacking:AddSlider("atk_slider", {
-        Title = "Aim Interpolation",
-        Description = "Smoothness scale.",
-        Min = 1,
-        Max = 20,
-        Rounding = 1,
-        Default = 5
+
+
+    local MultiDropdown = Tabs.Main:AddDropdown("MultiDropdown", {
+        Title = "Dropdown",
+        Description = "You can select multiple values.",
+        Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Multi = true,
+        Default = {"seven", "twelve"},
     })
-    atk_slider:OnChanged(function(v)
-        print("[ Hirimi: atk_slider ] " .. tostring(v))
+
+    MultiDropdown:SetValue({
+        three = true,
+        five = true,
+        seven = false
+    })
+
+    MultiDropdown:OnChanged(function(Value)
+        local Values = {}
+        for Value, State in next, Value do
+            table.insert(Values, Value)
+        end
+        print("Mutlidropdown changed:", table.concat(Values, ", "))
     end)
 
-    Tabs.Attacking:AddButton({
-        Title = "Calibrate Hitboxes",
-        Description = "Recalculate target hitboxes",
-        Callback = function()
-            print("[ Hirimi: Calibrate Hitboxes ] Executed")
+    local Input = Tabs.Main:AddInput("Input", {
+        Title = "Input",
+        Default = "Default",
+        Placeholder = "Placeholder",
+        Numeric = false, -- Only allows numbers
+        Finished = false, -- Only calls callback when you press enter
+        Callback = function(Value)
+            print("Input changed:", Value)
         end
     })
 
-    local atk_input = Tabs.Attacking:AddInput("atk_input", {
-        Title = "Target Key",
-        Description = "Key to hold.",
-        Placeholder = "MouseButton2"
-    })
-    atk_input:OnChanged(function(v)
-        print("[ Hirimi: atk_input ] " .. tostring(v))
+    Input:OnChanged(function()
+        print("Input updated:", Input.Value)
     end)
 end
 
-do
-    local def_toggle = Tabs.Defending:AddToggle("def_toggle", {
-        Title = "Auto Use Consumables",
-        Description = "Consume healing items.",
-        Default = true
-    })
-    def_toggle:OnChanged(function(v)
-        print("[ Hirimi: def_toggle ] " .. tostring(v))
-    end)
-
-    local def_slider = Tabs.Defending:AddSlider("def_slider", {
-        Title = "Health Threshold",
-        Description = "Trigger percentage.",
-        Min = 10,
-        Max = 80,
-        Rounding = 5,
-        Default = 35
-    })
-    def_slider:OnChanged(function(v)
-        print("[ Hirimi: def_slider ] " .. tostring(v))
-    end)
-
-    Tabs.Defending:AddButton({
-        Title = "Emergency Warp",
-        Description = "Teleport to safety",
-        Callback = function()
-            print("[ Hirimi: Emergency Warp ] Executed")
-        end
-    })
-end
-
-task.wait(1)
-
-Fluent:Notify({
-    Title = "Hi, " .. tostring(game:GetService("Players").LocalPlayer.Name),
-    Content = "Welcome to Hirimi Library!",
-    Duration = 5
-})
 
 themeManager:init(libraryRaw)
 saveManager:init(libraryRaw)
