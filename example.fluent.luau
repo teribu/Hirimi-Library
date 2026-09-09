@@ -121,7 +121,7 @@ do
         Title = "Input",
         Default = "Default",
         Placeholder = "Placeholder",
-        Numeric = false, -- Only allows numbers
+        Numeric = false, -- Only allows numbers, not work
         Finished = false, -- Only calls callback when you press enter
         Callback = function(Value)
             print("Input changed:", Value)
