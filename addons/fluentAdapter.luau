@@ -28,6 +28,7 @@ return function (library)
                 responsive = false,
                 dragSizeable = true,
                 scale = 0.75,
+                size = config.Size,
                 realtimeResize = true
             },
             theme = config.Theme,

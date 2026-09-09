@@ -135,6 +135,7 @@ function library:createWindow(config)
             responsive = false,
             dragSizeable = true,
             scale = 0.7,
+            size = UDim2.new(0, 600, 0, 400),
             realtimeResize = true
         },
         theme = 'dark',

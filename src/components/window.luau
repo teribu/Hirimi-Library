@@ -1,7 +1,6 @@
 local userInputService = game:GetService("UserInputService")
 local camera = game:GetService("Workspace").CurrentCamera
 
-local tween = require("../modules/tween")
 local creator = require("../modules/creator")
 local new = creator.new
 local addSignal = creator.addSignal
@@ -14,6 +13,7 @@ return function (config)
         scale = config.size.scale,
         responsive = config.size.responsive,
         realtimeResize = config.size.realtimeResize,
+        size = config.size.size,
         tabWidth = config.sidebar.width or 160
     }
 
@@ -24,7 +24,7 @@ return function (config)
     window.root = new("Frame", {
         AnchorPoint = Vector2.new(0.5, 0.5),
         Position = UDim2.new(0.5, 0, 0.5, 0),
-        Size = UDim2.new(0, 600, 0, 400),
+        Size = window.size,
         Parent = config.parent,
         themeTag = {
             BackgroundColor3 = "background",
