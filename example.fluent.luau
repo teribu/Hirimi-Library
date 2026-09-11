@@ -9,7 +9,7 @@ local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
     SubTitle = "by dawid", -- not work
     TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460), -- not work
+    Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
@@ -121,7 +121,7 @@ do
         Title = "Input",
         Default = "Default",
         Placeholder = "Placeholder",
-        Numeric = false, -- Only allows numbers, not work
+        Numeric = false, -- Only allows numbers
         Finished = false, -- Only calls callback when you press enter
         Callback = function(Value)
             print("Input changed:", Value)

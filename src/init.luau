@@ -63,28 +63,24 @@ function library:generateUniqueId()
 end
 
 function library:mergeDictionaries(default, user)
-    if not user then
-        return default
-    end
+    default = default or {}
+    user = user or {}
 
     local result = {}
 
     for key, value in default do
-        if type(value) == "table" and type(user[key]) == "table" then
+        if type(value) == "table" then
             result[key] = self:mergeDictionaries(value, user[key])
         else
-            if user[key] ~= nil then
-                result[key] = user[key]
-            else
-                result[key] = value
-            end
+            result[key] = value
         end
     end
 
     for key, value in user do
-        if result[key] == nil then
-            result[key] = value
+        if type(value) == "table" and type(default[key]) == "table" then
+            continue
         end
+        result[key] = value
     end
 
     return result
@@ -129,7 +125,8 @@ function library:createWindow(config)
     local defaultConfig = {
         title = 'Hirimi Library',
         sidebar = {
-            width = 160
+            width = 160,
+            dynamic = true
         },
         size = {
             responsive = false,
@@ -143,7 +140,7 @@ function library:createWindow(config)
         keybind = Enum.KeyCode.LeftControl
     }
 
-    self:mergeDictionaries(defaultConfig, config)
+    config = self:mergeDictionaries(defaultConfig, config)
 
     config.library = library
     config.parent = gui

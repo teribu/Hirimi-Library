@@ -225,7 +225,7 @@ return function (config)
             for _, item in path do
                 table.insert(expanded, item.name)
             end
-            return table.concat(expanded, " / ")
+            return table.concat(expanded, " > ")
         end
 
         function searchBar:build()

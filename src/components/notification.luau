@@ -179,7 +179,7 @@ function notification:new(config)
 
     task.spawn(function()
         newNotification:Open()
-        if not config.duration then
+        if config.duration then
             task.wait(config.duration)
             newNotification:Close()
         end

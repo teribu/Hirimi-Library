@@ -83,6 +83,7 @@ return function (library)
                     min = config.Min,
                     max = config.Max,
                     step = config.Rounding,
+                    realTime = if config.Finished == nil then false else not config.Finished,
                     callback = config.Callback
                 })
 
@@ -121,6 +122,7 @@ return function (library)
                     title = config.Title,
                     desc = config.Description,
                     placeHolder = config.Placeholder,
+                    numeric = config.Numeric,
                     realTime = if config.Finished == nil then false else not config.Finished,
                     callback = config.Callback
                 })

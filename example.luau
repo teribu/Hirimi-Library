@@ -7,6 +7,7 @@ local window = library:createWindow({
     logo = "rbxassetid://109103782993270",
     sidebar = {
         width = 160,
+        dynamic = true,
         searchBar = {
             placeholderText = "Quick Search...",
             realTime = true,

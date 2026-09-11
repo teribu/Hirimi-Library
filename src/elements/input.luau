@@ -1,5 +1,3 @@
-local userInputService = game:GetService("UserInputService")
-
 local creator = require("../modules/creator")
 local tween = require("../modules/tween")
 
@@ -19,6 +17,7 @@ function element:new(flag, config)
         name = config.title,
         value = config.value or "",
         placeHolder = config.placeHolder or "",
+        numeric = config.numeric or false,
         clearTextOnFocus = config.clearTextOnFocus or false,
         realTime = config.realTime or false,
         parent = self.parent,
@@ -91,11 +90,37 @@ function element:new(flag, config)
         func(input.value)
     end
 
-	function input:setValue(value)
-	    inputBox.Text = tostring(value)
+    local isUpdating = false
 
-	    library:safeCallback(input.callback, value)
-	    library:safeCallback(input.changed, value)
+	function input:setValue(value)
+	    if input.numeric then
+            isUpdating = true
+
+            local cleanedText = sliderBox.Text:gsub("[^%d%.]", "")
+            local firstDot = cleanedText:find("%.")
+
+            if firstDot and cleanedText:find("%.", firstDot + 1) then
+                cleanedText = cleanedText:sub(1, firstDot) .. cleanedText:sub(firstDot + 1):gsub("%.", "")
+            end
+
+            local numValue = tonumber(cleanedText)
+
+            if numValue and numValue > slider.max then
+               inputBox.Text = tostring(slider.max) .. slider.suffix
+
+          	    library:safeCallback(input.callback, slider.max)
+          	    library:safeCallback(input.changed, slider.max)
+            else
+                inputBox.Text = cleanedText .. slider.suffix
+           	    library:safeCallback(input.callback, cleanedText)
+           	    library:safeCallback(input.changed, cleanedText)
+            end
+
+            isUpdating = false
+        else
+       	    library:safeCallback(input.callback, value)
+       	    library:safeCallback(input.changed, value)
+        end
 	end
 
     function input:destroy()
@@ -113,7 +138,8 @@ function element:new(flag, config)
         }, { duration = 0.2 })
     end)
 
-    addSignal(inputBox:GetPropertyChangedSignal("Text"), function()
+	addSignal(inputBox:GetPropertyChangedSignal("Text"), function()
+	    if isUpdating then return end
         if input.realTime then
             input:setValue(inputBox.Text)
         end

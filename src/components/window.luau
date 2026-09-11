@@ -14,7 +14,7 @@ return function (config)
         responsive = config.size.responsive,
         realtimeResize = config.size.realtimeResize,
         size = config.size.size,
-        tabWidth = config.sidebar.width or 160
+        tabWidth = config.sidebar.width
     }
 
     window.scaler = new("UIScale", {
@@ -52,6 +52,7 @@ return function (config)
         logo = config.logo,
         library = library,
         window = window,
+        dynamic = config.sidebar.dynamic,
         searchBar = config.sidebar.searchBar,
         tabModule = tabModule,
         userProfile = config.sidebar.userProfile,
