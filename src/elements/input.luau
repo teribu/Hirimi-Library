@@ -160,6 +160,8 @@ function element:new(flag, config)
     end)
 
     input:setValue(input.value)
+
+    input.rootFrame = inputFrame.root
     library.options[flag] = input
     return input
 end

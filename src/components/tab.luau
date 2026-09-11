@@ -25,12 +25,13 @@ local tabModule = {
 function tabModule:newGroup(title, collapsible, parent)
     local window = tabModule.window
 
+    self.totalGroups = self.totalGroups + 1
+
     local group = {
         name = title,
+        index = self.totalGroups,
         collapsed = false
     }
-
-    self.totalGroups = self.totalGroups + 1
 
     group.title = new("TextLabel", {
         Text = title,
@@ -90,7 +91,7 @@ function tabModule:newGroup(title, collapsible, parent)
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 0, 20),
         AutomaticSize = Enum.AutomaticSize.Y,
-        LayoutOrder = self.totalGroups - 1,
+        LayoutOrder = group.index - 1,
         ClipsDescendants = true,
         Parent = parent,
     }, {
@@ -165,6 +166,7 @@ function tabModule:newGroup(title, collapsible, parent)
         return tabModule:newTab(config.title, config.icon, self.container)
     end
 
+    self.groups[group.index] = group
     return group
 end
 
@@ -446,6 +448,10 @@ function tabModule:newTab(title, icon, parent)
         return addSection(self, config)
     end
 
+    function tab:getPath()
+        return {self}
+    end
+
     self.tabs[tab.index] = tab
 
     if not self.setuped and self.window.panel.pageLayout and self.window.panel.pageLayout.CurrentPage.LayoutOrder == 0 then
@@ -469,61 +475,6 @@ function tabModule:selectTab(tab)
     if not tab or type(tab) ~= "table" then
         return
     end
-
-    if self.currentTab ~= tab then
-        tab.container.root.Position = UDim2.new(0, 0, 0, 20)
-
-        tween.play(tab.container.root, {
-            Position = UDim2.new(0, 0, 0, 0),
-        }, { duration = 0.3, easingStyle = "Quad" })
-
-        tween.play(tab.container.root, {
-            GroupTransparency = 0
-        }, { duration = 0.4, easingStyle = "Quad" })
-
-        if self.currentTab then
-            creator.addThemeObject(self.currentTab.trigger.frame, {
-                BackgroundTransparency = if not self.currentTab.hoving then "tabTransparency" else "tabHoverTransparency"
-            })
-
-            creator.addThemeObject(self.currentTab.trigger.title, {
-                TextColor3 = "secondary",
-                TextTransparency = "secondaryTransparency"
-            })
-
-            creator.addThemeObject(self.currentTab.trigger.icon, {
-                ImageColor3 = "secondary",
-                ImageTransparency = "secondaryTransparency"
-            })
-
-            tween.plays(self.currentTab.trigger, {
-                frame = {
-                    props = {
-                        BackgroundTransparency = creator.getThemeProperty(if not self.currentTab.hoving then "tabTransparency" else "tabHoverTransparency")
-                    }
-                },
-                title = {
-                    props = {
-                        TextColor3 = creator.getThemeProperty("secondary"),
-                        TextTransparency = creator.getThemeProperty("secondaryTransparency")
-                    }
-                },
-                icon = {
-                    props = {
-                        ImageColor3 = creator.getThemeProperty("secondary"),
-                        ImageTransparency = creator.getThemeProperty("secondaryTransparency")
-                    }
-                },
-            }, { duration = 0.4 })
-
-            self.currentTab.container.root.GroupTransparency = 1
-            self.currentTab.container.root.Visible = false
-
-            self.currentTab.selected = false
-        end
-    end
-
-    tab.container.root.Visible = true
 
     creator.addThemeObject(tab.trigger.frame, {
         BackgroundTransparency = if not tab.hoving then "tabActiveTransparency" else "tabActiveHoverTransparency"
@@ -565,6 +516,49 @@ function tabModule:selectTab(tab)
     tab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 0, 0)
 
     if self.currentTab then
+        self.currentTab.container.root.GroupTransparency = 1
+        self.currentTab.container.root.Visible = false
+
+        if self.currentTab ~= tab then
+            tab.container.container.CanvasPosition = Vector2.new(0, 0)
+
+            creator.addThemeObject(self.currentTab.trigger.frame, {
+                BackgroundTransparency = if not self.currentTab.hoving then "tabTransparency" else "tabHoverTransparency"
+            })
+
+            creator.addThemeObject(self.currentTab.trigger.title, {
+                TextColor3 = "secondary",
+                TextTransparency = "secondaryTransparency"
+            })
+
+            creator.addThemeObject(self.currentTab.trigger.icon, {
+                ImageColor3 = "secondary",
+                ImageTransparency = "secondaryTransparency"
+            })
+
+            tween.plays(self.currentTab.trigger, {
+                frame = {
+                    props = {
+                        BackgroundTransparency = creator.getThemeProperty(if not self.currentTab.hoving then "tabTransparency" else "tabHoverTransparency")
+                    }
+                },
+                title = {
+                    props = {
+                        TextColor3 = creator.getThemeProperty("secondary"),
+                        TextTransparency = creator.getThemeProperty("secondaryTransparency")
+                    }
+                },
+                icon = {
+                    props = {
+                        ImageColor3 = creator.getThemeProperty("secondary"),
+                        ImageTransparency = creator.getThemeProperty("secondaryTransparency")
+                    }
+                },
+            }, { duration = 0.4 })
+
+            self.currentTab.selected = false
+        end
+
         self.currentTab.trigger.indicatorFrame.AnchorPoint = Vector2.new(0, 1)
         self.currentTab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 1, 0)
 
@@ -595,6 +589,23 @@ function tabModule:selectTab(tab)
         ImageTransparency = 0.9
     }, { duration = 0.3 })
 
+    tab.container.root.Visible = true
+
+    if self.currentLayer == tab.layer then
+        tab.container.container.CanvasPosition = Vector2.new(0, 0)
+        tab.container.root.Position = UDim2.new(0, 0, 0, 20)
+
+        tween.play(tab.container.root, {
+            Position = UDim2.new(0, 0, 0, 0),
+        }, { duration = 0.3, easingStyle = "Quad" })
+
+        tween.play(tab.container.root, {
+            GroupTransparency = 0
+        }, { duration = 0.4, easingStyle = "Quad" })
+    else
+        tab.container.root.GroupTransparency = 0
+    end
+
     self.currentTab = tab
     tab.selected = true
 
@@ -608,6 +619,8 @@ function tabModule:selectTab(tab)
     if self.window.panel.updateHeader then
         self.window.panel:updateHeader({tab})
     end
+
+    return tab
 end
 
 function tabModule:setSection(section)
@@ -664,13 +677,15 @@ function tabModule:navigateTo(section)
     if self.window.panel then
         self.window.panel:updateHeader(section:getPath())
     end
+
+    return section
 end
 
 function tabModule:init(library, window)
     self.library = library
     self.window = window
 
-    self.sectionModule = require("./section"):init(self)
+    self.sectionModule = require("./section"):init(self, library)
     return self
 end
 

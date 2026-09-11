@@ -5,10 +5,12 @@ local new = creator.new
 local addSignal = creator.addSignal
 
 local sectionModule = {
-    tabModule = nil
+    tabModule = nil,
+    library = nil
 }
 
 function sectionModule:newSection(title, desc, index, layer, parent, tab)
+    local library = self.library
     local section = {
         type = "section",
         name = title,
@@ -107,11 +109,15 @@ function sectionModule:newSection(title, desc, index, layer, parent, tab)
     end)
 
     self.tabModule:getLayer(section.layer).children[section.index] = section
+
+    section.rootFrame = sectionFrame.root
+    library.options[library:generateUniqueId()] = section
     return section
 end
 
-function sectionModule:init(tabModule)
+function sectionModule:init(tabModule, library)
     self.tabModule = tabModule
+    self.library = library
 
     return self
 end

@@ -245,11 +245,18 @@ return function (config)
                     desc = "Found in " .. self:expandPath(item.parent:getPath()),
                     callback = function()
                         tabModule:navigateTo(item.parent)
+                        local target = tabModule.currentTab or tabModule.currentSection
+                        if target.type == "tab" then
+                            target.container.container.CanvasPosition = Vector2.new(0, item.rootFrame.AbsolutePosition.Y - target.container.container.AbsolutePosition.Y + target.container.container.CanvasPosition.Y)
+                        else
+                            target.container.CanvasPosition = Vector2.new(0, item.rootFrame.AbsolutePosition.Y - target.container.AbsolutePosition.Y + target.container.CanvasPosition.Y)
+                        end
                     end
                 })
             end
         end
 
+        local oldLayer
         function searchBar:update(text)
             if text == "" then
                 if tabModule.currentTab or tabModule.currentSection then
@@ -265,8 +272,11 @@ return function (config)
                     if window.panel.pageLayout then
                         window.panel.pageLayout:JumpToIndex(0)
                     end
+
+                    tabModule.currentLayer = 0
                 end
             else
+                if oldLayer ~= 0 then oldLayer = 0 end
                 if window.panel then
                     window.panel:updateHeader({
                         {
@@ -278,12 +288,19 @@ return function (config)
                     if window.panel.pageLayout then
                         window.panel.pageLayout:JumpToIndex(0)
                     end
+
+                    tabModule.currentLayer = 0
                 end
             end
 
             searchBar.results = searchBar:search(text)
             searchBar:build()
         end
+
+        addSignal(searchBar.searchBox.Focused, function()
+            oldLayer = tabModule.currentLayer
+            tabModule.currentLayer = 0
+        end)
 
         addSignal(searchBar.searchBox:GetPropertyChangedSignal("Text"), function()
             if searchBar.realtime then
@@ -294,6 +311,9 @@ return function (config)
         addSignal(searchBar.searchBox.FocusLost, function()
             if not searchBar.realtime then
                 searchBar:update(searchBar.searchBox.Text)
+            end
+            if oldLayer ~= 0 then
+                tabModule.currentLayer = oldLayer
             end
         end)
 

@@ -248,6 +248,8 @@ function element:new(flag, config)
     end
 
     slider:setValue(slider.value)
+
+    slider.rootFrame = sliderFrame.root
     library.options[flag] = slider
     return slider
 end

@@ -161,6 +161,8 @@ function element:new(flag, config)
     end)
 
     toggle:setValue(toggle.value)
+
+    toggle.rootFrame = toggleFrame.root
     library.options[flag] = toggle
     return toggle
 end

@@ -49,10 +49,10 @@ function element:new(config)
 
     addSignal(buttonFrame.root.Activated, button.callback)
 
+    button.rootFrame = buttonFrame.root
     if library then
         library.options[library:generateUniqueId()] = button
     end
-
     return button
 end
 

@@ -29,7 +29,7 @@ function element:new(flag, config)
         parent = self.parent,
         opened = false,
         openWidth = config.openWidth or 92,
-        openHeight = config.openHeight or 200,
+        openHeight = config.openHeight or 192,
         callback = config.callback or function() end
     }
 
@@ -188,6 +188,12 @@ function element:new(flag, config)
 		Visible = false
 	}, {
 		dropdownHolderFrame,
+		new("TextButton", {
+		    Text = "",
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 1, 0),
+			ZIndex = 0
+		}),
 		new("UISizeConstraint", {
 			MinSize = Vector2.new(dropdown.openWidth, 0),
 		})
@@ -579,6 +585,7 @@ function element:new(flag, config)
 
     dropdown:setValue(dropdown.value)
 
+    dropdown.rootFrame = dropdownFrame.root
     library.options[flag] = dropdown
     return dropdown
 end

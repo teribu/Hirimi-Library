@@ -78,7 +78,7 @@ return {
     optionTextNotActiveTransparency = 0.5,
 
     dropdown = Color3.fromRGB(30, 31, 35),
-    dropdownTransparency = 0.05,
+    dropdownTransparency = 0.1,
     dropdownBorder = Color3.fromRGB(0, 0, 0),
     dropdownBorderTransparency = 0.5,
     dropdownShadow = Color3.fromRGB(0, 0, 0),

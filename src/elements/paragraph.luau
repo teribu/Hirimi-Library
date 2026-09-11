@@ -1,9 +1,3 @@
-local creator = require("../modules/creator")
-local tween = require("../modules/tween")
-
-local new = creator.new
-local addSignal = creator.addSignal
-
 local element = {}
 element.__index = element
 element.__type = "Paragraph"
@@ -33,6 +27,7 @@ function element:new(config)
         return paragraphFrame:destroy()
     end
 
+    paragraph.rootFrame = paragraphFrame.root
     if library then
         library.options[library:generateUniqueId()] = paragraph
     end

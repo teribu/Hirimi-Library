@@ -1,8 +1,5 @@
 local creator = require("../modules/creator")
-local tween = require("../modules/tween")
-
 local new = creator.new
-local addSignal = creator.addSignal
 
 local element = {}
 element.__index = element
@@ -57,6 +54,7 @@ function element:new(text)
         return labelFrame:Destroy()
     end
 
+    label.rootFrame = labelFrame
     if library then
         library.options[library:generateUniqueId()] = label
     end

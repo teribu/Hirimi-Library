@@ -52,7 +52,6 @@ return function (config)
         logo = config.logo,
         library = library,
         window = window,
-        dynamic = config.sidebar.dynamic,
         searchBar = config.sidebar.searchBar,
         tabModule = tabModule,
         userProfile = config.sidebar.userProfile,

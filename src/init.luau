@@ -125,8 +125,7 @@ function library:createWindow(config)
     local defaultConfig = {
         title = 'Hirimi Library',
         sidebar = {
-            width = 160,
-            dynamic = true
+            width = 160
         },
         size = {
             responsive = false,
