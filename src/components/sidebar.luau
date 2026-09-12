@@ -259,8 +259,8 @@ return function (config)
         local oldLayer
         function searchBar:update(text)
             if text == "" then
-                if tabModule.currentTab or tabModule.currentSection then
-                    tabModule:navigateTo(tabModule.currentTab or tabModule.currentSection)
+                if tabModule.currentSection or tabModule.currentTab then
+                    tabModule:navigateTo(tabModule.currentSection or tabModule.currentTab)
                 else
                     window.panel:updateHeader({
                         {
