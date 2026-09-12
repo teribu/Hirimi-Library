@@ -1,5 +1,5 @@
 return {
-    name = "light",
+    name = "Light",
 
     ghostDragging = Color3.fromRGB(0, 0, 0),
     ghostDraggingTransparency = 0.5,

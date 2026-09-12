@@ -1,5 +1,5 @@
 return {
-    name = "catppuccin_mocha",
+    name = "Catppuccin Mocha",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,
@@ -22,7 +22,7 @@ return {
     searchBarTransparency = 0.9,
     searchIcon = Color3.fromRGB(205, 214, 244),
     searchIconTransparency = 0.5,
-    searchBoxPlaceholder = Color3.fromRGB(108, 112, 134),
+    searchBoxPlaceholder = Color3.fromRGB(124, 128, 153),
     searchBoxText = Color3.fromRGB(205, 214, 244),
 
     userProfile = Color3.fromRGB(137, 180, 250),
@@ -93,5 +93,5 @@ return {
     secondary = Color3.fromRGB(205, 214, 244),
     secondaryTransparency = 0.5,
 
-    placeHolder = Color3.fromRGB(108, 112, 134)
+    placeHolder = Color3.fromRGB(124, 128, 153)
 }

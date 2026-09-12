@@ -39,7 +39,7 @@ end
 function creator.getThemeProperty(property)
     local library = require("../")
     local currentTheme = library.themes[library.theme]
-    local darkTheme = library.themes["dark"] or {}
+    local darkTheme = library.themes["Dark"] or {}
 
     if currentTheme and currentTheme[property] ~= nil then
         return currentTheme[property]

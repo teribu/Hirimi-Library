@@ -1,5 +1,5 @@
 return {
-    name = "nord",
+    name = "Nord",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,
@@ -22,7 +22,7 @@ return {
     searchBarTransparency = 0.9,
     searchIcon = Color3.fromRGB(236, 239, 244),
     searchIconTransparency = 0.5,
-    searchBoxPlaceholder = Color3.fromRGB(138, 149, 167),
+    searchBoxPlaceholder = Color3.fromRGB(152, 160, 171),
     searchBoxText = Color3.fromRGB(236, 239, 244),
 
     userProfile = Color3.fromRGB(136, 192, 208),
@@ -93,5 +93,5 @@ return {
     secondary = Color3.fromRGB(236, 239, 244),
     secondaryTransparency = 0.5,
 
-    placeHolder = Color3.fromRGB(138, 149, 167)
+    placeHolder = Color3.fromRGB(152, 160, 171)
 }

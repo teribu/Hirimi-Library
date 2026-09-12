@@ -1,5 +1,5 @@
 return {
-    name = "tokyo_night",
+    name = "Tokyo Night",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,
@@ -22,7 +22,7 @@ return {
     searchBarTransparency = 0.9,
     searchIcon = Color3.fromRGB(192, 202, 245),
     searchIconTransparency = 0.5,
-    searchBoxPlaceholder = Color3.fromRGB(102, 113, 162),
+    searchBoxPlaceholder = Color3.fromRGB(114, 123, 162),
     searchBoxText = Color3.fromRGB(192, 202, 245),
 
     userProfile = Color3.fromRGB(122, 162, 247),
@@ -93,5 +93,5 @@ return {
     secondary = Color3.fromRGB(192, 202, 245),
     secondaryTransparency = 0.5,
 
-    placeHolder = Color3.fromRGB(102, 113, 162)
+    placeHolder = Color3.fromRGB(114, 123, 162)
 }

@@ -1,5 +1,5 @@
 return {
-    name = "dracula",
+    name = "Dracula",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,

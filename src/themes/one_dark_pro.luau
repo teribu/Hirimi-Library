@@ -1,5 +1,5 @@
 return {
-    name = "one_dark_pro",
+    name = "One Dark Pro",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,

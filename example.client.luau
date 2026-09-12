@@ -23,7 +23,7 @@ local window = library:createWindow({
         scale = 0.75,
         realtimeResize = true
     },
-    theme = "light",
+    theme = "Light",
     acrylic = true,
     keybind = Enum.KeyCode.LeftControl
 })

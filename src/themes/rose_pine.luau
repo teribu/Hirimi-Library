@@ -1,5 +1,5 @@
 return {
-    name = "rose_pine",
+    name = "Rose Pine",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,
@@ -22,7 +22,7 @@ return {
     searchBarTransparency = 0.9,
     searchIcon = Color3.fromRGB(224, 222, 244),
     searchIconTransparency = 0.5,
-    searchBoxPlaceholder = Color3.fromRGB(136, 135, 148),
+    searchBoxPlaceholder = Color3.fromRGB(150, 145, 172),
     searchBoxText = Color3.fromRGB(224, 222, 244),
 
     userProfile = Color3.fromRGB(196, 167, 231),
@@ -93,5 +93,5 @@ return {
     secondary = Color3.fromRGB(224, 222, 244),
     secondaryTransparency = 0.5,
 
-    placeHolder = Color3.fromRGB(136, 135, 148)
+    placeHolder = Color3.fromRGB(150, 145, 172)
 }
