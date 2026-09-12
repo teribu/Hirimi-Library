@@ -28,7 +28,7 @@ return {
     userProfile = Color3.fromRGB(94, 129, 172),
     userProfileHoverTransparency = 0.94,
     userProfileTransparency = 1,
-    userImage = Color3.fromRGB(0, 0, 0),
+    userImage = Color3.fromRGB(46, 52, 64),
     userImageTransparency = 0.92,
     username = Color3.fromRGB(46, 52, 64),
     usernameTransparency = 0,
@@ -68,7 +68,7 @@ return {
 
     option = Color3.fromRGB(94, 129, 172),
     optionTransparency = 0.9,
-    optionBorder = Color3.fromRGB(30, 30, 30),
+    optionBorder = Color3.fromRGB(43, 59, 79),
     optionBorderTransparency = 0.88,
     optionHoverTransparency = 0.95,
     optionHoverActiveTransparency = 0.85,

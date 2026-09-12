@@ -28,7 +28,7 @@ return {
     userProfile = Color3.fromRGB(89, 91, 95),
     userProfileHoverTransparency = 0.94,
     userProfileTransparency = 1,
-    userImage = Color3.fromRGB(0, 0, 0),
+    userImage = Color3.fromRGB(30, 31, 35),
     userImageTransparency = 0.92,
     username = Color3.fromRGB(30, 31, 35),
     usernameTransparency = 0,
