@@ -7,7 +7,7 @@ return {
     ghostDraggingBorderTransparency = 0,
 
     background = Color3.fromRGB(225, 231, 241),
-    backgroundTransparency = 0.1,
+    backgroundTransparency = 0.05,
 
     shadow = Color3.fromRGB(40, 40, 40),
     shadowTransparency = 0.5,
@@ -79,12 +79,12 @@ return {
 
     dropdown = Color3.fromRGB(225, 231, 241),
     dropdownTransparency = 0.1,
-    dropdownBorder = Color3.fromRGB(108, 108, 108),
+    dropdownBorder = Color3.fromRGB(138, 138, 138),
     dropdownBorderTransparency = 0.5,
     dropdownShadow = Color3.fromRGB(108, 108, 108),
     dropdownShadowTransparency = 0.5,
 
-    accent = Color3.fromRGB(85, 145, 234),
+    accent = Color3.fromRGB(56, 150, 255),
     accentTransparency = 0.2,
 
     primary = Color3.fromRGB(30, 31, 35),
