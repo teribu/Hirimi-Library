@@ -1,10 +1,12 @@
 # Hirimi
 A Roblox UI library built with Luau and designed for modern scripting utilities.
+![Hirimi UI Light Theme](assets/light_theme.bmp)
+![Hirimi UI Dark Theme](assets/dark_theme.bmp)
 
 ## ⚡ Features
 
 * Fluent-compatible API
-* Theme support
+* 15+ Theme support
 * Modular architecture
 * Lightweight and customizable
 * Support quick searching
