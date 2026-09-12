@@ -490,11 +490,22 @@ function element:new(flag, config)
         else
             dropdownText.Text = tostring(self.value or "None")
         end
+
+        return self.value
 	end
 
     function dropdown:onChanged(func)
         dropdown.changed = func
         func(dropdown.value)
+    end
+
+    function dropdown:setOptions(options)
+        self.options = options
+        self.totalButtons = -1
+
+        self:updateValue()
+
+        return self.options
     end
 
 	function dropdown:setValue(value)

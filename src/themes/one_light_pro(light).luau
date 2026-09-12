@@ -22,7 +22,7 @@ return {
     searchBarTransparency = 0.9,
     searchIcon = Color3.fromRGB(56, 58, 66),
     searchIconTransparency = 0.5,
-    searchBoxPlaceholder = Color3.fromRGB(160, 161, 167),
+    searchBoxPlaceholder = Color3.fromRGB(141, 147, 167),
     searchBoxText = Color3.fromRGB(56, 58, 66),
 
     userProfile = Color3.fromRGB(64, 120, 242),
@@ -93,5 +93,5 @@ return {
     secondary = Color3.fromRGB(56, 58, 66),
     secondaryTransparency = 0.5,
 
-    placeHolder = Color3.fromRGB(160, 161, 167)
+    placeHolder = Color3.fromRGB(141, 147, 167)
 }

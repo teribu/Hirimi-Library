@@ -64,6 +64,7 @@ do
         desc = "Element placed directly in tab.",
         value = true,
     })
+
     home_direct_toggle:onChanged(function(v)
         print("[ Hirimi: home_direct_toggle ] " .. tostring(v))
     end)
@@ -76,6 +77,7 @@ do
         step = 1,
         value = 50,
     })
+
     home_direct_slider:onChanged(function(v)
         print("[ Hirimi: home_direct_slider ] " .. tostring(v))
     end)
@@ -93,6 +95,7 @@ do
         placeHolder = "Type...",
         value = "HomeData",
     })
+
     home_direct_input:onChanged(function(v)
         print("[ Hirimi: home_direct_input ] " .. tostring(v))
     end)
@@ -103,6 +106,7 @@ do
         options = {"Opt1", "Opt2", "Opt3", "Opt4", "Opt5", "Opt6", "Opt7", "Opt8", "Opt9", "Opt10", "Opt11", "Opt12", "Opt13", "Opt14", "Opt15", "Opt16", "Opt17", "Opt18", "Opt19", "Opt20"},
         value = "Opt1",
     })
+
     home_direct_dropdown:onChanged(function(v)
         print("[ Hirimi: home_direct_dropdown ] " .. tostring(v))
     end)
@@ -114,6 +118,7 @@ do
         value = {"Opt1", "Opt2", "Opt3"},
         multi = true,
     })
+
     home_direct_multidropdown:onChanged(function(v)
         print("[ Hirimi: home_direct_multidropdown ] Selected count: " .. tostring(#v))
     end)
@@ -128,6 +133,7 @@ do
         desc = "State trigger",
         value = true,
     })
+
     nest_t1:onChanged(function(v)
         print("[ Hirimi: nest_t1 ] " .. tostring(v))
     end)
@@ -140,6 +146,7 @@ do
         step = 1,
         value = 5,
     })
+
     nest_s1:onChanged(function(v)
         print("[ Hirimi: nest_s1 ] " .. tostring(v))
     end)
@@ -150,6 +157,7 @@ do
         placeHolder = "Text...",
         value = "Data1",
     })
+
     nest_i1:onChanged(function(v)
         print("[ Hirimi: nest_i1 ] " .. tostring(v))
     end)
@@ -160,6 +168,7 @@ do
         options = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20"},
         value = "A1",
     })
+
     nest_d1:onChanged(function(v)
         print("[ Hirimi: nest_d1 ] " .. tostring(v))
     end)
@@ -174,6 +183,7 @@ do
         desc = "State trigger",
         value = true,
     })
+
     nest_t2:onChanged(function(v)
         print("[ Hirimi: nest_t2 ] " .. tostring(v))
     end)
@@ -186,6 +196,7 @@ do
         step = 1,
         value = 5,
     })
+
     nest_s2:onChanged(function(v)
         print("[ Hirimi: nest_s2 ] " .. tostring(v))
     end)
@@ -196,6 +207,7 @@ do
         placeHolder = "Text...",
         value = "Data2",
     })
+
     nest_i2:onChanged(function(v)
         print("[ Hirimi: nest_i2 ] " .. tostring(v))
     end)
@@ -206,6 +218,7 @@ do
         options = {"B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"},
         value = "B1",
     })
+
     nest_d2:onChanged(function(v)
         print("[ Hirimi: nest_d2 ] " .. tostring(v))
     end)
@@ -220,6 +233,7 @@ do
         desc = "State trigger",
         value = true,
     })
+
     nest_t3:onChanged(function(v)
         print("[ Hirimi: nest_t3 ] " .. tostring(v))
     end)
@@ -232,6 +246,7 @@ do
         step = 1,
         value = 5,
     })
+
     nest_s3:onChanged(function(v)
         print("[ Hirimi: nest_s3 ] " .. tostring(v))
     end)
@@ -242,6 +257,7 @@ do
         placeHolder = "Text...",
         value = "Data3",
     })
+
     nest_i3:onChanged(function(v)
         print("[ Hirimi: nest_i3 ] " .. tostring(v))
     end)
@@ -252,6 +268,7 @@ do
         options = {"C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18", "C19", "C20"},
         value = "C1",
     })
+
     nest_d3:onChanged(function(v)
         print("[ Hirimi: nest_d3 ] " .. tostring(v))
     end)
@@ -266,6 +283,7 @@ do
         desc = "State trigger",
         value = true,
     })
+
     nest_t4:onChanged(function(v)
         print("[ Hirimi: nest_t4 ] " .. tostring(v))
     end)
@@ -278,6 +296,7 @@ do
         step = 1,
         value = 5,
     })
+
     nest_s4:onChanged(function(v)
         print("[ Hirimi: nest_s4 ] " .. tostring(v))
     end)
@@ -288,6 +307,7 @@ do
         placeHolder = "Text...",
         value = "Data4",
     })
+
     nest_i4:onChanged(function(v)
         print("[ Hirimi: nest_i4 ] " .. tostring(v))
     end)
@@ -298,6 +318,7 @@ do
         options = {"D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20"},
         value = "D1",
     })
+
     nest_d4:onChanged(function(v)
         print("[ Hirimi: nest_d4 ] " .. tostring(v))
     end)
@@ -312,6 +333,7 @@ do
         desc = "State trigger",
         value = true,
     })
+
     nest_t5:onChanged(function(v)
         print("[ Hirimi: nest_t5 ] " .. tostring(v))
     end)
@@ -324,6 +346,7 @@ do
         step = 1,
         value = 5,
     })
+
     nest_s5:onChanged(function(v)
         print("[ Hirimi: nest_s5 ] " .. tostring(v))
     end)
@@ -334,6 +357,7 @@ do
         placeHolder = "Text...",
         value = "Data5",
     })
+
     nest_i5:onChanged(function(v)
         print("[ Hirimi: nest_i5 ] " .. tostring(v))
     end)
@@ -345,6 +369,7 @@ do
         value = {"E1", "E2", "E3"},
         multi = true,
     })
+
     nest_d5:onChanged(function(v)
         print("[ Hirimi: nest_d5 ] Selected count: " .. tostring(#v))
     end)
@@ -357,15 +382,25 @@ do
         options = library:getThemes(),
         value = library.theme,
     })
+
     themes:onChanged(function(v)
         library:setTheme(v)
     end)
+
+    tabs.options:addButton({
+        title = "Reload Themes",
+        desc = "Scan and update the list of available themes.",
+        callback = function()
+            themes:setOptions(library:getThemes())
+        end
+    })
 
     local acrylic = tabs.options:addToggle("acrylic", {
         title = "Acrylic Blur",
         desc = "Apply semi-transparent blur behind the interface.",
         value = true,
     })
+
     acrylic:onChanged(function(v)
         window:setAcrylic(v)
     end)
@@ -375,6 +410,7 @@ do
         desc = "Make the window background transparent to see through.",
         value = true,
     })
+
     transparent:onChanged(function(v)
         window:setTransparent(v)
     end)
@@ -386,6 +422,7 @@ do
         desc = "Activate targeting logic.",
         value = false,
     })
+
     atk_toggle:onChanged(function(v)
         print("[ Hirimi: atk_toggle ] " .. tostring(v))
     end)
@@ -398,6 +435,7 @@ do
         step = 1,
         value = 5,
     })
+
     atk_slider:onChanged(function(v)
         print("[ Hirimi: atk_slider ] " .. tostring(v))
     end)
@@ -408,6 +446,7 @@ do
         placeHolder = "MouseButton2",
         value = "MouseButton2",
     })
+
     atk_input:onChanged(function(v)
         print("[ Hirimi: atk_input ] " .. tostring(v))
     end)
@@ -418,6 +457,7 @@ do
         options = {"Pr1", "Pr2", "Pr3", "Pr4", "Pr5", "Pr6", "Pr7", "Pr8", "Pr9", "Pr10", "Pr11", "Pr12", "Pr13", "Pr14", "Pr15", "Pr16", "Pr17", "Pr18", "Pr19", "Pr20"},
         value = "Pr1",
     })
+
     atk_dropdown:onChanged(function(v)
         print("[ Hirimi: atk_dropdown ] " .. tostring(v))
     end)
@@ -429,6 +469,7 @@ do
         value = {"Fac1", "Fac2"},
         multi = true,
     })
+
     atk_multidropdown:onChanged(function(v)
         print("[ Hirimi: atk_multidropdown ] Selected count: " .. tostring(#v))
     end)
@@ -440,6 +481,7 @@ do
         desc = "Consume healing items.",
         value = true,
     })
+
     def_toggle:onChanged(function(v)
         print("[ Hirimi: def_toggle ] " .. tostring(v))
     end)
@@ -453,6 +495,7 @@ do
         value = 35,
         suffix = "%",
     })
+
     def_slider:onChanged(function(v)
         print("[ Hirimi: def_slider ] " .. tostring(v))
     end)
@@ -463,6 +506,7 @@ do
         placeHolder = "0, 50, 0",
         value = "120, 15, -450",
     })
+
     def_input:onChanged(function(v)
         print("[ Hirimi: def_input ] " .. tostring(v))
     end)
@@ -473,6 +517,7 @@ do
         options = {"St1", "St2", "St3", "St4", "St5", "St6", "St7", "St8", "St9", "St10", "St11", "St12", "St13", "St14", "St15", "St16", "St17", "St18", "St19", "St20"},
         value = "St1",
     })
+
     def_dropdown:onChanged(function(v)
         print("[ Hirimi: def_dropdown ] " .. tostring(v))
     end)
@@ -484,6 +529,7 @@ do
         value = {"Prot1", "Prot2"},
         multi = true,
     })
+
     def_multidropdown:onChanged(function(v)
         print("[ Hirimi: def_multidropdown ] Selected count: " .. tostring(#v))
     end)

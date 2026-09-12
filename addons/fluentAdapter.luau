@@ -66,6 +66,7 @@ return function (library)
                 })
 
                 toggle.OnChanged = toggle.onChanged
+                toggle.Value = toggle.value
 
                 function toggle:SetValue(value)
                     toggle:setValue(value)
@@ -88,6 +89,7 @@ return function (library)
                 })
 
                 slider.OnChanged = slider.onChanged
+                slider.Value = slider.value
 
                 function slider:SetValue(value)
                     slider:setValue(value)
@@ -108,10 +110,17 @@ return function (library)
                 })
 
                 dropdown.OnChanged = dropdown.onChanged
+                dropdown.Value = dropdown.value
+                dropdown.Options = dropdown.options
 
                 function dropdown:SetValue(value)
                     dropdown:setValue(value)
                     dropdown.Value = dropdown.value
+                end
+
+                function dropdown:SetOptions(options)
+                    dropdown:setOptions(options)
+                    dropdown.Options = dropdown.options
                 end
 
                 return dropdown
@@ -128,6 +137,7 @@ return function (library)
                 })
 
                 input.OnChanged = input.onChanged
+                input.Value = input.value
 
                 function input:SetValue(value)
                     input:setValue(value)
