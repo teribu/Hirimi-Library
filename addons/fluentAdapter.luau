@@ -21,9 +21,7 @@ return function (library)
         local window = library:createWindow({
             title = config.Title,
             logo = config.Logo,
-            sidebar = {
-                width = config.TabWidth,
-            },
+            sidebar = config.Sidebar,
             size = {
                 responsive = false,
                 dragSizeable = true,

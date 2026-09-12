@@ -1,3 +1,4 @@
+-- add this
 local libraryRaw = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/releases/latest/download/main.luau"))()
 local themeManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/themeManager.luau"))()
 local saveManager = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-Library/raw/main/addons/saveManager.luau"))()
@@ -5,13 +6,28 @@ local fluentAdapter = loadstring(game:HttpGet("https://github.com/teribu/Hirimi-
 
 local Fluent = fluentAdapter(libraryRaw)
 
+-- resetup window
 local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
     Logo = "rbxassetid://109103782993270",
-    TabWidth = 146,
     Size = UDim2.fromOffset(600, 400),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
+
+    -- add this
+    Sidebar = {
+        width = 146,
+        searchBar = {
+            placeholderText = "Quick Search...",
+            realTime = true,
+            clearTextOnFocus = true
+        },
+        userProfile = {
+            name = "Teru",
+            desc = "# 3107"
+        }
+    },
+
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
@@ -23,6 +39,7 @@ local Tabs = {
 
 local Options = Fluent.Options
 
+-- add ur Fluent Elements there, theres some element not work (like: Dialog, Colorpicker, Keybind)
 do
     Fluent:Notify({
         Title = "Notification",
@@ -133,6 +150,6 @@ do
     end)
 end
 
-
+-- add this
 themeManager:init(libraryRaw)
 saveManager:init(libraryRaw)
