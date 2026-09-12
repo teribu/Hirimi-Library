@@ -23,6 +23,7 @@ local library = loadstring(game:HttpGet(
 ## 📜 Usage
 
 See the example implementation in: [example.luau](example.luau)
+See the example implementation for fluent in: [example.fluent.luau](example.fluent.luau)
 
 ## ❤️ Credits
 
