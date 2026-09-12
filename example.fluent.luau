@@ -7,7 +7,7 @@ local Fluent = fluentAdapter(libraryRaw)
 
 local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
-    SubTitle = "by dawid", -- not work
+    Logo = "rbxassetid://109103782993270",
     TabWidth = 146,
     Size = UDim2.fromOffset(600, 400),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely

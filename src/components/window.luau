@@ -329,6 +329,22 @@ return function (config)
         return self.acrylic:setValue(value)
     end
 
+    function window:setTransparent(value)
+        if value then
+            creator.addThemeObject(window.root, {
+                BackgroundTransparency = "backgroundTransparency"
+            })
+
+            window.root.BackgroundTransparency = creator.getThemeProperty("backgroundTransparency")
+        else
+            creator.removeThemeObject(window.root, {
+                BackgroundTransparency = "backgroundTransparency"
+            })
+
+            window.root.BackgroundTransparency = 0
+        end
+    end
+
     function window:setVisibility(visible)
         self.state = not not visible
         self.root.Visible = visible

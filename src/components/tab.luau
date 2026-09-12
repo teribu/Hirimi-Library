@@ -296,6 +296,8 @@ function tabModule:newTab(title, icon, parent)
 
     trigger.indicatorFrame = new("Frame", {
         Size = UDim2.new(0, 2, 0, 0),
+        AnchorPoint = Vector2.new(0, 0.5),
+        Position = UDim2.new(0, 0, 0.5, 0),
         BackgroundTransparency = 1,
         themeTag = {
             BackgroundColor3 = "accent",
@@ -512,9 +514,6 @@ function tabModule:selectTab(tab)
         }
     }, { duration = 0.3 })
 
-    tab.trigger.indicatorFrame.AnchorPoint = Vector2.new(0, 0)
-    tab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 0, 0)
-
     if self.currentTab then
         self.currentTab.container.root.GroupTransparency = 1
         self.currentTab.container.root.Visible = false
@@ -557,17 +556,6 @@ function tabModule:selectTab(tab)
             }, { duration = 0.4 })
 
             self.currentTab.selected = false
-        end
-
-        self.currentTab.trigger.indicatorFrame.AnchorPoint = Vector2.new(0, 1)
-        self.currentTab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 1, 0)
-
-        if self.currentTab.index > tab.index then
-            tab.trigger.indicatorFrame.AnchorPoint = Vector2.new(0, 1)
-            tab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 1, 0)
-
-            self.currentTab.trigger.indicatorFrame.AnchorPoint = Vector2.new(0, 0)
-            self.currentTab.trigger.indicatorFrame.Position = UDim2.new(0, 0, 0, 0)
         end
 
         tween.play(self.currentTab.trigger.indicatorFrame, {

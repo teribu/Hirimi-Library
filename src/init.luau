@@ -152,8 +152,16 @@ function library:createWindow(config)
     return window
 end
 
+function library:getThemes()
+    local themes = {}
+    for name, theme in self.themes do
+        table.insert(themes, name)
+    end
+    return themes
+end
+
 function library:setTheme(value)
-    if library.window and table.find(library.themes, value) then
+    if library.window and library.themes[value] then
         library.theme = value
         creator.updateTheme()
     end

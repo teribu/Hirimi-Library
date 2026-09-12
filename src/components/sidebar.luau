@@ -340,6 +340,9 @@ return function (config)
                 Image = config.userProfile.avatar or "rbxassetid://80239799213490",
                 Size = UDim2.new(1, 0, 1, 0),
                 BackgroundTransparency = 1,
+                themeTag = {
+                    ImageColor3 = "userImage"
+                }
             }, {
                 new("UICorner", {
                     CornerRadius = UDim.new(1, 0)
@@ -429,6 +432,26 @@ return function (config)
                 PaddingBottom = UDim.new(0, 5)
             })
         })
+
+        addSignal(userProfile.frame.MouseEnter, function()
+            creator.addThemeObject(userProfile.frame, {
+                BackgroundTransparency = "userProfileHoverTransparency"
+            })
+
+            tween.play(userProfile.frame, {
+                BackgroundTransparency = creator.getThemeProperty("userProfileHoverTransparency")
+            }, { duration = 0.3 })
+        end)
+
+        addSignal(userProfile.frame.MouseLeave, function()
+            creator.addThemeObject(userProfile.frame, {
+                BackgroundTransparency = "userProfileTransparency"
+            })
+
+            tween.play(userProfile.frame, {
+                BackgroundTransparency = creator.getThemeProperty("userProfileTransparency")
+            }, { duration = 0.2 })
+        end)
 
         containerSize += 50
     end
