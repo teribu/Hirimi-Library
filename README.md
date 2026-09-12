@@ -33,3 +33,6 @@ local library = loadstring(game:HttpGet(
 ## 📄 License
 
 Licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## 📽 Showcase
+[![Hirimi Library Demo](https://img.youtube.com/vi/7kdkikq5-7A/maxresdefault.jpg)](https://youtu.be/7kdkikq5-7A)
