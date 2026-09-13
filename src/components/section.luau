@@ -1,5 +1,4 @@
 local creator = require("../modules/creator")
-local tween = creator.tween
 
 local new = creator.new
 local addSignal = creator.addSignal

@@ -157,7 +157,7 @@ function tabModule:newGroup(title, collapsible, parent)
             end
         end
 
-        group.button.Activated:Connect(function()
+        addSignal(group.button.Activated, function()
             group:setCollapsed(not group.collapsed)
         end)
     end

@@ -101,7 +101,7 @@ return function (config)
             dragStart = input.Position
             startPos = window.root.Position
 
-            input.Changed:Connect(function()
+            addSignal(input.Changed, function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
                 end

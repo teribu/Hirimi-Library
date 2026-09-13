@@ -6,14 +6,14 @@ local themeManager = {
 
 function themeManager:ensureFolder(onlyCheck)
     if onlyCheck then
-        return isfolder(self.folder) and isfolder(self.folder .. "/Themes")
+        return isfolder(self.folder) and isfolder(self.folder .. "/themes")
     end
 
     if not isfolder(self.folder) then
         makefolder(self.folder)
     end
 
-    local themeFolder = self.folder .. "/Themes"
+    local themeFolder = self.folder .. "/themes"
     if not isfolder(themeFolder) then
         makefolder(themeFolder)
     end

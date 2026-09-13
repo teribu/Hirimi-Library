@@ -96,28 +96,22 @@ function element:new(flag, config)
 	    if input.numeric then
             isUpdating = true
 
-            local cleanedText = sliderBox.Text:gsub("[^%d%.]", "")
+            local cleanedText = inputBox.Text:gsub("[^%d%.]", "")
             local firstDot = cleanedText:find("%.")
 
             if firstDot and cleanedText:find("%.", firstDot + 1) then
                 cleanedText = cleanedText:sub(1, firstDot) .. cleanedText:sub(firstDot + 1):gsub("%.", "")
             end
 
-            local numValue = tonumber(cleanedText)
+            inputBox.Text = cleanedText
+            local cleanedNumber = tonumber(cleanedText) or 0
 
-            if numValue and numValue > slider.max then
-               inputBox.Text = tostring(slider.max) .. slider.suffix
-
-          	    library:safeCallback(input.callback, slider.max)
-          	    library:safeCallback(input.changed, slider.max)
-            else
-                inputBox.Text = cleanedText .. slider.suffix
-           	    library:safeCallback(input.callback, cleanedText)
-           	    library:safeCallback(input.changed, cleanedText)
-            end
+            library:safeCallback(input.callback, cleanedNumber)
+            library:safeCallback(input.changed, cleanedNumber)
 
             isUpdating = false
         else
+            inputBox.Text = value
        	    library:safeCallback(input.callback, value)
        	    library:safeCallback(input.changed, value)
         end
@@ -140,6 +134,19 @@ function element:new(flag, config)
 
 	addSignal(inputBox:GetPropertyChangedSignal("Text"), function()
 	    if isUpdating then return end
+		if input.numeric then
+    		isUpdating = true
+    		local cleanedText = inputBox.Text:gsub("[^%d%.]", "")
+            local firstDot = cleanedText:find("%.")
+
+            if firstDot and cleanedText:find("%.", firstDot + 1) then
+                cleanedText = cleanedText:sub(1, firstDot) .. cleanedText:sub(firstDot + 1):gsub("%.", "")
+            end
+
+            inputBox.Text = cleanedText
+		end
+
+        isUpdating = false
         if input.realTime then
             input:setValue(inputBox.Text)
         end

@@ -146,13 +146,13 @@ return function (config)
 
                     local disconnectChanged, disconnectEnded
 
-                    disconnectChanged = userInputService.InputChanged:Connect(function(moveInput)
+                    disconnectChanged = addSignal(userInputService.InputChanged, function(moveInput)
                         if sizing and (moveInput.UserInputType == Enum.UserInputType.MouseMovement or moveInput.UserInputType == Enum.UserInputType.Touch) then
                             updateSize(moveInput)
                         end
                     end)
 
-                    disconnectEnded = userInputService.InputEnded:Connect(function(endInput)
+                    disconnectEnded = addSignal(userInputService.InputEnded, function(endInput)
                         if endInput.UserInputType == input.UserInputType then
                             sizing = false
                             disconnectChanged:Disconnect()
@@ -277,13 +277,13 @@ return function (config)
 
                     local disconnectChanged, disconnectEnded
 
-                    disconnectChanged = userInputService.InputChanged:Connect(function(moveInput)
+                    disconnectChanged = addSignal(userInputService.InputChanged, function(moveInput)
                         if sizing and (moveInput.UserInputType == Enum.UserInputType.MouseMovement or moveInput.UserInputType == Enum.UserInputType.Touch) then
                             updateSize(moveInput)
                         end
                     end)
 
-                    disconnectEnded = userInputService.InputEnded:Connect(function(endInput)
+                    disconnectEnded = addSignal(userInputService.InputEnded, function(endInput)
                         if endInput.UserInputType == input.UserInputType then
                             window.root.Size = ghostDragging.Size
 

@@ -49,7 +49,7 @@ function saveManager:load()
         return
     end
 
-    local path = self.folder .. "/Configs/" .. self.username .. "/config.json"
+    local path = self.folder .. "/configs/" .. self.username .. "/config.json"
     if not isfile(path) then
         return
     end
