@@ -103,6 +103,8 @@ return function (library)
                     desc = config.Description,
                     value = config.Default,
                     options = config.Values,
+                    alphabetReversing = config.AlphabetReversing,
+                    pin = config.Pin,
                     multi = config.Multi,
                     callback = config.Callback
                 })

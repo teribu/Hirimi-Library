@@ -380,6 +380,7 @@ do
         title = "UI Theme",
         desc = "Select your preferred interface color scheme.",
         options = library:getThemes(),
+        pins = {"Dark", "Dark+", "Light", "Light+"},
         value = library.theme,
     })
 

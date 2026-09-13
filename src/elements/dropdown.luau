@@ -22,9 +22,12 @@ function element:new(flag, config)
         type = "dropdown",
         name = config.title,
         options = config.options or {},
+        pins = config.pins or {},
+        alphabetReversing = config.alphabetReversing or false,
         multi = config.multi or false,
         value = (config.multi and (config.value or {})) or (config.value or ""),
         totalButtons = 0,
+        totalPins = (config.pins and #config.pins) or 0,
         buttons = {},
         parent = self.parent,
         opened = false,
@@ -278,11 +281,13 @@ function element:new(flag, config)
         self.totalButtons = 0
         self.buttons = {}
 
+        local pinIndex = -self.totalPins
+
         for _, value in self.options do
             self.totalButtons += 1
 
             local isSelected = false
-				if self.multi then
+			if self.multi then
                 isSelected = self.value[value] == true
             else
                 isSelected = self.value == value
@@ -302,7 +307,6 @@ function element:new(flag, config)
                 TextXAlignment = Enum.TextXAlignment.Left,
                 TextYAlignment = Enum.TextYAlignment.Top,
                 TextWrapped = true,
-                LayoutOrder = self.totalButtons,
                 FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium, Enum.FontStyle.Normal),
                 AutomaticSize = Enum.AutomaticSize.Y,
                 themeTag = {
@@ -366,6 +370,14 @@ function element:new(flag, config)
                 button.frame,
                 button.indicator
             })
+
+            if table.find(self.pins, value) then
+                pinIndex += 1
+                button.root.LayoutOrder = pinIndex - 1
+                button.title.Text = "★ "..tostring(value)
+            else
+                button.root.LayoutOrder = self.totalButtons
+            end
 
             addSignal(button.frame.MouseEnter, function()
                 button.hovering = true
@@ -499,12 +511,28 @@ function element:new(flag, config)
         func(dropdown.value)
     end
 
-    function dropdown:setOptions(options)
-        self.options = options
-        self.totalButtons = -1
+    function dropdown:setPins(pins)
+        self.pins = (type(pins) == "number" and self.options[pins] and {self.options[pins]})
+        or (type(pins) == "string" and table.find(self.options, pins) and {self.options[pins]})
+        or (type(pins) == "table" and pins) or {}
 
+        self.totalPins = #self.pins
+        self.totalButtons = -1
         self:updateValue()
 
+        return self.pins
+    end
+
+    function dropdown:setOptions(options)
+        self.options = options
+        table.sort(self.options, function(a, b)
+            if self.alphabetReversing then
+                return a:lower() > b:lower()
+            end
+            return a:lower() < b:lower()
+        end)
+
+        self:setPins(self.pins)
         return self.options
     end
 
@@ -594,6 +622,7 @@ function element:new(flag, config)
 		end
 	end)
 
+    dropdown:setOptions(dropdown.options)
     dropdown:setValue(dropdown.value)
 
     dropdown.rootFrame = dropdownFrame.root

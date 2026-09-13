@@ -7,7 +7,7 @@ A Roblox UI library built with Luau and designed for modern scripting utilities.
 ## ⚡ Features
 
 * Fluent-compatible API
-* 15 Theme support
+* 430+ Themes support
 * Modular architecture
 * Lightweight and customizable
 * Support quick searching

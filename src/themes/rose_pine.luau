@@ -1,5 +1,5 @@
 return {
-    name = "Rose Pine",
+    name = "Rosé Pine",
 
     ghostDragging = Color3.fromRGB(255, 255, 255),
     ghostDraggingTransparency = 0.5,
@@ -82,7 +82,7 @@ return {
     dropdownBorder = Color3.fromRGB(0, 0, 0),
     dropdownBorderTransparency = 0.5,
     dropdownShadow = Color3.fromRGB(0, 0, 0),
-    dropdownShadowTransparency = 0.5,
+    dropdownShadowTransparency = 0.7,
 
     accent = Color3.fromRGB(235, 111, 146),
     accentTransparency = 0.2,

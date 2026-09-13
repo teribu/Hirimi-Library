@@ -82,7 +82,7 @@ return {
     dropdownBorder = Color3.fromRGB(138, 138, 138),
     dropdownBorderTransparency = 0.5,
     dropdownShadow = Color3.fromRGB(108, 108, 108),
-    dropdownShadowTransparency = 0.5,
+    dropdownShadowTransparency = 0.7,
 
     accent = Color3.fromRGB(56, 150, 255),
     accentTransparency = 0.2,
