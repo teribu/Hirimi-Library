@@ -526,10 +526,27 @@ function element:new(flag, config)
     function dropdown:setOptions(options)
         self.options = options
         table.sort(self.options, function(a, b)
-            if self.alphabetReversing then
-                return a:lower() > b:lower()
+            local a_low = a:lower()
+            local b_low = b:lower()
+
+            local numA = tonumber(a_low:match("%d+"))
+            local numB = tonumber(b_low:match("%d+"))
+
+            if numA and numB then
+                local prefixA = a_low:gsub("%d+", "")
+                local prefixB = b_low:gsub("%d+", "")
+                if prefixA == prefixB then
+                    if self.alphabetReversing then
+                        return numA > numB
+                    end
+                    return numA < numB
+                end
             end
-            return a:lower() < b:lower()
+
+            if self.alphabetReversing then
+                return a_low > b_low
+            end
+            return a_low < b_low
         end)
 
         self:setPins(self.pins)
