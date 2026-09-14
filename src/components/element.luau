@@ -14,7 +14,7 @@ return function (title, desc, parent, hover)
         TextSize = 10,
         TextXAlignment = Enum.TextXAlignment.Left,
         TextYAlignment = Enum.TextYAlignment.Top,
-        FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.Bold, Enum.FontStyle.Normal),
+        FontFace = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal),
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 0, 10),
         AutomaticSize = Enum.AutomaticSize.Y,
